@@ -1,0 +1,6 @@
+content   parasite   chrome/parasite/content/
+skin parasite classic/1.0 chrome/parasite/skin/
+
+overlay chrome://browser/content/browser.xul     chrome://parasite/content/parasite-overlay.xul
+
+style   chrome://global/content/customizeToolbar.xul    chrome://parasite/skin/parasite-overlay.css

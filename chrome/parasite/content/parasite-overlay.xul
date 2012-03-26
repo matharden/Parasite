@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<?xml-stylesheet href='chrome://parasite/skin/parasite-overlay.css' type='text/css'?>
+<overlay id='parasite-overlay' xmlns='http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul'>
+
+	<script type='application/x-javascript' src='chrome://parasite/content/parasite.js'></script>
+
+	<toolbarpalette id='BrowserToolbarPalette'>
+		<toolbarbutton id='parasite-toolbarbutton' type='menu' orient='horizontal'
+			class='chromeclass-toolbar-additional toolbarbutton-1'
+			label='Parasite'
+			tooltiptext='Move to another host'>
+			<menupopup context=""
+				onpopupshowing="parasite.showDropDown(event);"
+				oncommand="parasite.moveHost(event); event.preventDefault();">
+				<menuitem type="radio" label="hosts1"/>
+				<menuitem type="radio" label="hosts2"/>
+				<menuitem type="radio" label="hosts3"/>
+				<menuitem type="radio" label="hosts4"/>
+				<menuseparator/>
+				<menu label="Projects">
+					<menupopup>
+						<menuitem label="Project 1"/>
+						<menuitem label="Project 1"/>
+					</menupopup>
+				</menu>
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+</overlay>

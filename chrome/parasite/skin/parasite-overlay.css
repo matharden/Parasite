@@ -1,0 +1,16 @@
+#parasite-toolbarbutton {
+  list-style-image: url("chrome://parasite/skin/parasite-small.png");
+}
+#parasite-toolbarbutton[disabled],
+#parasite-toolbarbutton.disabled {
+  list-style-image: url("chrome://parasite/skin/parasite-small-disabled.png");
+}
+
+toolbar[iconsize="small"] #parasite-toolbarbutton {
+  list-style-image: url("chrome://parasite/skin/parasite-small.png");
+}
+toolbar[iconsize="small"] #parasite-toolbarbutton.disabled {
+  list-style-image: url("chrome://parasite/skin/parasite-small-disabled.png");
+}
+
+menuitem[checked="true"] {color:gray;}

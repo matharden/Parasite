@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>parasite@brainfire.co.uk</em:id>
+    <em:name>Parasite</em:name>
+    <em:version>0.2.6</em:version>
+    <em:type>2</em:type>
+    <em:description>Move from host to host</em:description>
+	<em:iconURL>chrome://parasite/skin/parasite.png</em:iconURL>
+   
+    <em:creator>Mat Harden</em:creator>
+    <em:homepageURL>http://brainfire.co.uk/parasite/</em:homepageURL>
+
+	<em:optionsURL>chrome://parasite/content/parasite-options.xul</em:optionsURL>
+
+    <!-- Target Application this extension can install into, 
+         with minimum and maximum supported versions. --> 
+	<em:targetApplication>
+		<Description>
+			<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+			<em:minVersion>3.5</em:minVersion>
+			<em:maxVersion>5.*</em:maxVersion>
+		</Description>
+	</em:targetApplication>
+   
+  </Description>      
+</RDF>

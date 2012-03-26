@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://browser/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://parasite/skin/options.css" type="text/css"?>
+ 
+<prefwindow id="parasite-pref-window" title="Parasite Options" type="prefwindow"
+			xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+	<prefpane id="parasite-pref-pane" label="Parasite Hosts" image="chrome://parasite/skin/tb-icon-large.png" onpaneload="parasite.populateHostsList()">
+		
+		<preferences>
+			<preference id="hosts" name="extensions.parasite.hosts" type="string" />
+		</preferences>
+		
+		
+		<script type="application/x-javascript" src="chrome://parasite/content/parasite-options.js" />
+		
+		
+		<!-- List of Hosts -->
+		<groupbox id="hostsListGroupBox">
+			<!-- <caption label="My Hosts" /> -->
+			<tree id="hostTree" flex="1" seltype="single" hidecolumnpicker="true"
+					preference-editable="true" preference="hosts"
+					onsynctopreference="return parasite.saveHostList();" rows="7">
+				
+				<treecols>
+					<treecol id="hostLabel" label="Host (domain name)" flex="60" />
+					<splitter class="tree-splitter" />
+					<treecol id="labelLabel" label="Label" flex="40" />
+				</treecols>
+
+				<treechildren id="hostsList">
+				<!-- to be populated by the javascript on pane load -->
+				</treechildren>
+			</tree>
+
+			<!-- New and Delete Buttons -->
+			<hbox pack="center">
+				<hbox pack="start" flex="40">
+					<button id="upButton" label="Up" oncommand="parasite.move('up');" />
+					<button id="downButton" label="Down" oncommand="parasite.move('down');" />
+				</hbox>
+				<spacer flex="10" />
+				<hbox pack="end" flex="50">
+					<button id="newButton" label="New" oncommand="parasite.newHost();" />
+					<button id="editButton" label="Edit" oncommand="parasite.editHost();" />
+					<button id="deleteButton" label="Delete" oncommand="parasite.deleteHost();" />
+				</hbox>
+			</hbox>
+		</groupbox>
+
+
+		
+		<!-- EDIT VIEW -->
+		
+		<!-- Create/Edit Hosts -->
+		<vbox id="hostsEditorGroupBox" hidden="true">
+        
+			<groupbox id="locationsGroupBox">
+				<caption label="Host Details" />
+				<grid>
+					<columns>
+						<column/>
+						<column flex="1"/>
+					</columns>
+
+					<rows>
+						<row>
+							<label value="Host" class="label" control="host-text" />
+							<textbox class="padded" flex="1" id="host-text" type="autocomplete" autocompletesearch="history" onchange="parasite.cropHostname('host-text')" />
+						</row>
+						<row>
+							<label/>
+							<description class="help">
+								Example: http://your-site.com (auto-complete history enabled)
+							</description>
+						</row>
+						<row>
+							<label value="Label" class="label" control="label-text" />
+							<textbox class="padded" flex="1" id="label-text" onfocus="parasite.cropHostname('host-text')" />
+						</row>
+						<row>
+							<label/>
+							<description class="help">Example: LIVE</description>
+						</row>
+					</rows>
+				</grid>
+			</groupbox>
+
+			<!-- hidden textbox to store the index of the host being modified -->
+			<textbox id="editIndex" value="" hidden="true" />
+
+			<!-- Save and Cancel Buttons -->
+			<hbox pack="center">
+				<button id="saveButton" label="Save" oncommand="parasite.saveHost();" />
+				<button id="cancelButton" label="Cancel" oncommand="parasite.cancelHost();" />
+			</hbox>
+
+		</vbox>
+
+	</prefpane>
+
+
+</prefwindow>
